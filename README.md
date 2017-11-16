@@ -1,2 +1,3 @@
-# Telegram бот для мероприятий.
-Пример для статьи на Habrahabr.
+# Telegram бот для мероприятий (для статьи на Habrahabr).
+Сама статья: https://habrahabr.ru/post/342560/
+
