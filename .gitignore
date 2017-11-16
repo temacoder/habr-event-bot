@@ -1,0 +1,4 @@
+/node_modules
+logfile.log
+.idea
+package-lock.json

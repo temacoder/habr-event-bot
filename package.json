@@ -1,0 +1,30 @@
+{
+  "name": "event-bot-for-habr",
+  "version": "1.0.0",
+  "description": "Telegram бот для мероприятий. Пример для статьи на Habrahabr.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikhailcarlin7/event-bot-for-habr.git"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "mongoose": "^4.13.2",
+    "ncp": "^2.0.0",
+    "node-telegram-bot-api": "^0.27.0",
+    "path": "^0.12.7",
+    "simple-node-logger": "^0.93.33"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikhailcarlin7/event-bot-for-habr/issues"
+  },
+  "homepage": "https://github.com/mikhailcarlin7/event-bot-for-habr#readme"
+}

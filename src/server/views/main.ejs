@@ -1,0 +1,18 @@
+<h2>Массовая рассылка</h2>
+<form method="POST" action="/globalmessage">
+    <h3>Сообщение:</h3>
+    <textarea class="form-control" rows="3" type="text" name="message">"Напишите что-нибудь..."</textarea>
+    <br/><br/>
+    <input align="right" class="btn btn-success" type="submit" value="Отправить">
+</form>
+
+<h2>Все кто взаимодейсвтовал с ботом:</h2>
+<ul>
+    <% for(var i=0; i<users.length; i++) {%>
+    <li class="list-group-item list-group-item-info">
+        <%= users[i].telegramId %>
+    </li>
+    <% } %>
+</ul>
+<br/>
+<a href="/" class="btn btn-success">Обновить</a>
