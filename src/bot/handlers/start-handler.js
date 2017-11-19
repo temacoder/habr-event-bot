@@ -11,20 +11,20 @@ var StartHandler = {
 
         telegramBot.onText(clientMessage, function (message, match) {
             Logger.notify('Sending message from the default handler ');
+            var clientInfo = BotUtils.getClientInfo(message);
 
-            var clientId = BotUtils.getClientIdFromMessage(message);
+            console.dir(message);
 
-            UserService.saveUser(clientId, function (saveErr, result) {
+            UserService.saveUser(clientInfo, function (saveErr, result) {
                 if (saveErr) {
-                    telegramBot.sendMessage(clientId, 'Some error! Sorry', messageOptions);
+                    telegramBot.sendMessage(clientInfo.telegramId, 'Some error! Sorry', messageOptions);
                     return;
                 }
-
                 MessagesService.getByTitle('start', function (getErr, message) {
                     if (getErr) {
-                        telegramBot.sendMessage(clientId, 'Some error! Sorry', messageOptions);
+                        telegramBot.sendMessage(clientInfo.telegramId, 'Some error! Sorry', messageOptions);
                     } else {
-                        telegramBot.sendMessage(clientId, message.text, messageOptions);
+                        telegramBot.sendMessage(clientInfo.telegramId, message.text, messageOptions);
                     }
                 });
             });

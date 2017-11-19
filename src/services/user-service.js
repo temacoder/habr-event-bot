@@ -30,17 +30,19 @@ var UserService = {
         });
     },
 
-    saveUser: function (telegramId, callback) {
-        Logger.notify('Called UserService.saveUser with id: ' + telegramId + ' ');
+    saveUser: function (userInfo, callback) {
+        Logger.notify('Called UserService.saveUser with id: ' + userInfo.telegramId + ' ');
 
-        this.isNew(telegramId, function (err, result) {
+        this.isNew(userInfo.telegramId, function (err, result) {
             if (err) {
                 callback(err, null);
                 return;
             }
             if (result) {
                 var newUserDto = new UserModel({
-                    telegramId: telegramId
+                    telegramId: userInfo.telegramId,
+                    fistName: userInfo.firstName,
+                    lastName: userInfo.lastName
                 });
 
                 Logger.notify('Trying to save new user ');

@@ -1,9 +1,17 @@
 var BotUtils = {
-    getClientIdFromMessage: function (message) {
-        return message.hasOwnProperty('chat') ? message.chat.id : message.from.id;
+    getClientInfo: function (message) {
+        return {
+            firstName: message.from.first_name,
+            lastName: message.from.last_name,
+            telegramId:  message.hasOwnProperty('chat') ? message.chat.id : message.from.id
+        };
     },
 
-    buildDefaultButton : function (text, callback_data) {
+    getLastMessageText: function (message) {
+        return message.message.text;
+    },
+
+    buildDefaultButton: function (text, callback_data) {
         return [{
             text: text,
             callback_data: callback_data
@@ -32,6 +40,18 @@ var BotUtils = {
                 inline_keyboard: buttons
             })
         }
+    },
+
+    buildMessageOptionsForVoting: function () {
+        return {
+            parse_mode: "HTML",
+            disable_web_page_preview: false,
+            reply_markup : JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Да', callback_data: 'yes' }, { text: 'Нет', callback_data: 'no'}]
+                ]
+            })
+        };
     }
 };
 

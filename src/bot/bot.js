@@ -3,6 +3,7 @@ var BotUtils = require('./utils');
 var Logger = require('../utils/logger');
 var CalendarHandler = require('./handlers/calendar-handler');
 var StartHandler = require('./handlers/start-handler');
+var VoteHandler = require('./handlers/vote-handler');
 var fs = require('fs');
 
 var Bot = {
@@ -22,6 +23,7 @@ var Bot = {
 
         CalendarHandler.register(this.telegramBot, this.messageOptions);
         StartHandler.register(this.telegramBot, this.messageOptions);
+        VoteHandler.register(this.telegramBot, this.messageOptions);
     }
 };
 
