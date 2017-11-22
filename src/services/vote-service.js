@@ -14,10 +14,10 @@ var VoteService = {
         })
     },
 
-    isNew: function (time, callback) {
+    isNew: function (telegramId, question, callback) {
         Logger.notify('Called VoteService.isNew ');
 
-        VoteModel.findOne({time: time}, function (err, existingVote) {
+        VoteModel.findOne({telegramId: telegramId, question: question}, function (err, existingVote) {
             if (err) {
                 callback(err, null);
                 return;
@@ -35,7 +35,7 @@ var VoteService = {
             + voteInfo.question + ') for user: '
             + voteInfo.telegramId);
 
-        this.isNew(voteInfo.time, function (err, result) {
+        this.isNew(voteInfo.telegramId, voteInfo.question, function (err, result) {
             if (err) {
                 callback(err, null);
                 return;
@@ -47,9 +47,8 @@ var VoteService = {
                     answer: voteInfo.answer,
                     time: voteInfo.time
                 });
-
                 Logger.notify('Trying to save new vote ');
-
+                
                 newVoteDto.save(function (err) {
                     if (err) {
                         callback(err, null);

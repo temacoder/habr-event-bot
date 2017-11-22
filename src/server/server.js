@@ -49,6 +49,7 @@ var Server = {
     },
 
     privateMessage: function(request, response) {
+        Logger.notify('Called private message controller');
 
         var user = request.body.user;
         var message = request.body.message;
